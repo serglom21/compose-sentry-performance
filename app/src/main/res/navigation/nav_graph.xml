@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment"
+    >
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.sentry.MainFragment"
+        android:label="fragment_main"
+        >
+        <action
+            android:id="@+id/action_mainFragment_to_importantFlow"
+            app:destination="@id/importantFlow"
+            />
+    </fragment>
+    <navigation
+        android:id="@+id/importantFlow"
+        app:startDestination="@id/screenOneFragment"
+        >
+        <argument
+            android:name="arg_item_id"
+            app:argType="integer"
+            />
+        <fragment
+            android:id="@+id/screenOneFragment"
+            android:name="com.example.sentry.ScreenOneFragment"
+            android:label="fragment_screen_one"
+            >
+            <argument
+                android:name="arg_item_id"
+                app:argType="integer"
+                />
+            <action
+                android:id="@+id/action_screenOneFragment_to_screenTwoFragment"
+                app:destination="@id/screenTwoFragment"
+                />
+        </fragment>
+        <fragment
+            android:id="@+id/screenTwoFragment"
+            android:name="com.example.sentry.ScreenTwoFragment"
+            android:label="ScreenTwoFragment"
+            />
+    </navigation>
+</navigation>
