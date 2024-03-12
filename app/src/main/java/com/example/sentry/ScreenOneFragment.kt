@@ -12,10 +12,12 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.platform.testTag
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.sentry.ui.theme.SentryPerformanceTheme
+import io.sentry.Sentry
 
 class ScreenOneFragment : Fragment() {
 
@@ -41,6 +43,12 @@ class ScreenOneFragment : Fragment() {
                             onClick = { navigation.navigate(ScreenOneFragmentDirections.actionScreenOneFragmentToScreenTwoFragment()) },
                         ) {
                             Text(text = "Navigate next")
+                        }
+                        Button(
+                            onClick = { Sentry.addBreadcrumb("breadcrumb from screen one") },
+                            modifier = Modifier.testTag("BreadcrumbActionBtn")
+                        ) {
+                            Text(text = "Generate breadcrumb log")
                         }
                     }
                 }
